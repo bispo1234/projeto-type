@@ -1,0 +1,98 @@
+
+<main class="pagina">
+  <section class="cartao">
+    <header class="cabecalho">
+      <span class="marca">AGENDA UNIJORGE</span>
+      <h1>Cadastro de Evento</h1>
+      <p>Cadastre palestras, oficinas e semanas acadêmicas.</p>
+    </header>
+
+    <form (ngSubmit)="salvar()" novalidate>
+      <div class="campo">
+        <label for="titulo">Título do evento</label>
+        <input id="titulo" name="titulo" type="text"
+          [(ngModel)]="formulario.titulo"
+          (blur)="tocados.titulo = true"
+          [class.invalido]="tocados.titulo && !!erros.titulo"
+          placeholder="Ex.: Semana de Tecnologia" />
+        @if (tocados.titulo && erros.titulo) {
+          <small class="erro">{{ erros.titulo }}</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="data">Data</label>
+        <input id="data" name="data" type="date"
+          [(ngModel)]="formulario.data"
+          (blur)="tocados.data = true"
+          [class.invalido]="tocados.data && !!erros.data" />
+        @if (tocados.data && erros.data) {
+          <small class="erro">{{ erros.data }}</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="local">Local</label>
+        <select id="local" name="local"
+          [(ngModel)]="formulario.local"
+          (blur)="tocados.local = true"
+          [class.invalido]="tocados.local && !!erros.local">
+          <option value="">Selecione o local</option>
+          <option value="Auditório">Auditório</option>
+          <option value="Laboratório 1">Laboratório 1</option>
+          <option value="Laboratório 2">Laboratório 2</option>
+          <option value="Sala 101">Sala 101</option>
+        </select>
+        @if (tocados.local && erros.local) {
+          <small class="erro">{{ erros.local }}</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="emailResponsavel">E-mail do responsável</label>
+        <input id="emailResponsavel" name="emailResponsavel"
+          type="email" [(ngModel)]="formulario.emailResponsavel"
+          (blur)="tocados.emailResponsavel = true"
+          [class.invalido]="tocados.emailResponsavel && !!erros.emailResponsavel"
+          placeholder="responsavel@exemplo.com" />
+        @if (tocados.emailResponsavel && erros.emailResponsavel) {
+          <small class="erro">{{ erros.emailResponsavel }}</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="vagas">Vagas</label>
+        <input id="vagas" name="vagas" type="number"
+          min="1" max="200" step="1"
+          [(ngModel)]="formulario.vagas"
+          (blur)="tocados.vagas = true"
+          [class.invalido]="tocados.vagas && !!erros.vagas"
+          placeholder="Ex.: 50" />
+        @if (tocados.vagas && erros.vagas) {
+          <small class="erro">{{ erros.vagas }}</small>
+        }
+      </div>
+
+      <button type="submit" [disabled]="formularioInvalido">
+        Salvar
+      </button>
+    </form>
+  </section>
+
+  <section class="lista-eventos">
+    <h2>Eventos cadastrados</h2>
+
+    @for (evento of eventos; track evento.id) {
+      <article class="evento">
+        <h3>{{ evento.titulo }}</h3>
+        <p><strong>ID:</strong> {{ evento.id }}</p>
+        <p><strong>Data:</strong> {{ evento.data }}</p>
+        <p><strong>Local:</strong> {{ evento.local }}</p>
+        <p><strong>Responsável:</strong> {{ evento.emailResponsavel }}</p>
+        <p><strong>Vagas:</strong> {{ evento.vagas }}</p>
+      </article>
+    } @empty {
+      <p class="vazio">Nenhum evento cadastrado ainda.</p>
+    }
+  </section>
+</main>

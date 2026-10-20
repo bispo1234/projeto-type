@@ -1,0 +1,122 @@
+
+:host {
+  display: block;
+}
+
+.empresa-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.empresa-header {
+  margin-bottom: 28px;
+}
+
+.empresa-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-color, #222);
+}
+
+.empresa-header p {
+  margin: 0;
+  color: var(--text-secondary-color, #666);
+}
+
+.empresa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 12px;
+  background: var(--surface-color, #fff);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color, #333);
+}
+
+.form-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 7px;
+  outline: none;
+  font: inherit;
+  font-size: 14px;
+  background: var(--input-background, #fff);
+  color: var(--text-color, #222);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 12%);
+}
+
+.form-group small {
+  color: #dc2626;
+  font-size: 12px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.form-actions button {
+  padding: 11px 24px;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-limpar {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btn-enviar {
+  background: #2563eb;
+  color: #fff;
+}
+
+.form-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .empresa-container {
+    padding: 16px;
+  }
+
+  .empresa-form {
+    padding: 18px;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}

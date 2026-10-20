@@ -1,0 +1,93 @@
+
+<section class="empresa-container">
+  <header class="empresa-header">
+    <div>
+      <h1>Cadastro de Empresa</h1>
+      <p>Preencha os dados para cadastrar uma empresa.</p>
+    </div>
+  </header>
+
+  <form
+    #empresaForm="ngForm"
+    (ngSubmit)="enviar(empresaForm)"
+    (reset)="limpar(empresaForm)"
+    class="empresa-form"
+  >
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input
+        id="nome"
+        type="text"
+        name="nome"
+        [(ngModel)]="empresa.nome"
+        #nome="ngModel"
+        placeholder="Digite o nome da empresa"
+        required
+      />
+      <small *ngIf="nome.invalid && nome.touched">
+        Informe o nome da empresa.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="cnpj">CNPJ</label>
+      <input
+        id="cnpj"
+        type="text"
+        name="cnpj"
+        [(ngModel)]="empresa.cnpj"
+        placeholder="00.000.000/0000-00"
+        maxlength="18"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="logomarca">Logomarca</label>
+      <input
+        id="logomarca"
+        type="text"
+        name="logomarca"
+        [(ngModel)]="empresa.logomarca"
+        placeholder="Informe a URL da logomarca"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="fundacao">Fundação</label>
+      <input
+        id="fundacao"
+        type="date"
+        name="fundacao"
+        [(ngModel)]="empresa.fundacao"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <input
+        id="descricao"
+        type="text"
+        name="descricao"
+        [(ngModel)]="empresa.descricao"
+        placeholder="Descreva a empresa"
+        required
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="reset" class="btn-limpar">
+        Limpar
+      </button>
+
+      <button
+        type="submit"
+        class="btn-enviar"
+        [disabled]="empresaForm.invalid"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+</section>
